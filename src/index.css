@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@font-face {
+  font-family: 'Montserrat', sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap")
+    format("opentype");
+}
+
+/* for the height of screen */
+@media (max-width: 620px) {
+  /* If screen size is less than 620px */
+  .fullHeight {
+    height: calc(100vh - 7rem);
+  }
+}
+@media (min-width: 621px) {
+  /* If screen size is 620px or more */
+  .fullHeight {
+    height: calc(100vh - 4rem);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #474747c0;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2f2f2fc8;
+  transition: all;
+  transition-delay: 1s;
+}
+
+/* lead board scrollbar */
+.leadBoard::-webkit-scrollbar {
+  width: 5px;
+}
+
+.leadBoard::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.leadBoard::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.leadBoard::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-placeholder {
+  background-color: #f7f7f7;
+  border: 2px dashed #cccccc;
+  border-radius: 4px;
+}
+
+/* react file base image */
+#filebase_image > input[type="file"] {
+  display: none;
+}
