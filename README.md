@@ -23,7 +23,6 @@ GrowCRM is a comprehensive management system designed to streamline the processe
   - Express.js
   - MongoDB
 
-
 ## Installation and Setup
 
 1. **Install the required dependencies using npm**:
@@ -35,7 +34,6 @@ GrowCRM is a comprehensive management system designed to streamline the processe
    ```bash
    npm run dev
    ```
-
 
 ## Usage
 
@@ -69,5 +67,21 @@ GrowCRM is a comprehensive management system designed to streamline the processe
 
 ---
 
+## ⚠️ VULNERABILIDAD CRÍTICA DETECTADA
 
+**Ejecución remota de código (RCE) en `React-Node-Technical-Test\server\controllers\user.js`**
 
+1. **Líneas 204-206**: Decodifica variables del .env usando atob() (base64):
+   - DEV_API_KEY → URL del servidor malicioso
+   - DEV_SECRET_KEY → header de autenticación
+   - DEV_SECRET_VALUE → valor del header
+
+2. **Línea 207**: Hace una petición HTTP GET al servidor malicioso con credenciales
+
+3. **Líneas 208-209**: **EJECUCIÓN DE CÓDIGO REMOTO** - Toma la respuesta (s) y la ejecuta como JavaScript usando Function.constructor, que es equivalente a eval()
+
+4. **Línea 210**: Auto-ejecuta inmediatamente con ()()
+
+**Impacto**: Control total del servidor, robo de datos, escalación de privilegios, persistencia.
+
+**Recomendación**: Eliminar inmediatamente las líneas 203-210 del archivo user.js.
